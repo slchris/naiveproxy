@@ -1,0 +1,19 @@
+---
+
+- name: Run naiveproxy server
+  hosts: all
+  tasks:
+    - name: Create Workdir
+      ansible.builtin.file:
+        path: /opt/naiveproxy
+        state: directory
+
+    - name: Copy docker-compose
+      ansible.builtin.copy:
+        src: docker-compose.yaml
+        dest: /opt/naiveproxy/docker-compose.yaml
+
+    - name: Copy naiveproxy caddyfile
+      ansible.builtin.copy:
+        src: Caddyfile
+        dest: /opt/naiveproxy/Caddyfile

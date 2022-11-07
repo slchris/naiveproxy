@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+
+  naiveproxy:
+    image: ghcr.io/slchris/naiveproxy:v1
+    container_name: naiveproxy
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - /opt/naiveproxy/Caddyfile:/app/Caddyfile
+    command: /app/caddy run
